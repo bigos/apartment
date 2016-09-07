@@ -72,6 +72,9 @@ module Apartment
         Apartment.connection.schema_search_path = full_search_path
 
       rescue *rescuable_exceptions
+        puts $!.inspect
+        puts $!.backtrace
+
         raise TenantNotFound, "One of the following schema(s) is invalid: \"#{tenant}\" #{full_search_path}"
       end
 
