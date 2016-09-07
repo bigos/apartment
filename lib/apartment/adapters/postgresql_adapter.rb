@@ -62,6 +62,9 @@ module Apartment
       #   Set schema search path to new schema
       #
       def connect_to_new(tenant = nil)
+
+        # this is causing problems
+
         return reset if tenant.nil?
         raise ActiveRecord::StatementInvalid.new("Could not find schema #{tenant}") unless Apartment.connection.schema_exists? tenant
 
